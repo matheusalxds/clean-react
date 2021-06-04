@@ -32,3 +32,13 @@ ele utiliza o `baseUrl` como ponto de saída dos imports.
   "@/*": ["*"]
 },
 ```
+
+### Arquivo webpack
+```
+resolve: {
+ ...,
+ alias: {
+    '@': path.join(__diname, 'src') => especifica para o webpack como encontrar os arquivos que
+ }                                     tem o @
+}
+```
