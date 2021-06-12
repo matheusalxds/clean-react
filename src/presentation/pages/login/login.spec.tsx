@@ -35,7 +35,9 @@ const makeSut = (params?: SutParams): SutTypes => {
   }
 }
 
-const history = createMemoryHistory()
+const history = createMemoryHistory({
+  initialEntries: ['/login']
+})
 
 const populateEmailField = (sut: RenderResult, email = faker.internet.email()): void => {
   const emailInput = sut.getByTestId('email')
@@ -160,6 +162,8 @@ describe('Login Component', () => {
     simulateValidSubmit(sut)
     await waitFor(() => sut.getByTestId('form'))
     expect(localStorage.setItem).toHaveBeenCalledWith('accessToken', authenticationSpy.account.accessToken)
+    expect(history.length).toBe(1)
+    expect(history.location.pathname).toBe('/')
   })
 
   test('should add accessToken to localStorage on success', () => {
