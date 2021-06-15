@@ -47,3 +47,7 @@ resolve: {
 }
 ```
 
+### Validations
+Detalhes específicos do validador, vem no construtor, por exemplo: O tamanho do MinLength, se 
+fosse para comparar dois campos como ComparePassword, o campo de validação deverá vir no
+construtor.
