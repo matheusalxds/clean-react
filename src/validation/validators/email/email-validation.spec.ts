@@ -1,0 +1,10 @@
+import { InvalidFieldError } from '@/validation/errors'
+import { EmailValidation } from '@/validation/validators/email/email-validation'
+
+describe('EmailValidation', () => {
+  test('should return error if e-mail invalid', () => {
+    const sut = new EmailValidation('email')
+    const error = sut.validate('')
+    expect(error).toEqual(new InvalidFieldError('email'))
+  })
+})
