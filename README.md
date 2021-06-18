@@ -51,3 +51,11 @@ resolve: {
 Detalhes específicos do validador, vem no construtor, por exemplo: O tamanho do MinLength, se 
 fosse para comparar dois campos como ComparePassword, o campo de validação deverá vir no
 construtor.
+
+### Npm-check
+Auxilia na hora de verificar atualizações referentes aos packages utilizados no projeto.
+````
+-s = skip nas bibliotecas que diz que não estamos utilizando através de imports, mas estão
+sendo utilizados
+-u = Abre em modo iterativo, mostra quais queremos atualizar
+````
