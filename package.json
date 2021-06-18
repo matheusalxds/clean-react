@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "license": "GNU GPL3",
   "scripts": {
     "start": "webpack-cli serve --open --mode development",
     "test": "jest --passWithNoTests --no-cache --runInBand",
@@ -12,8 +13,7 @@
     "jest:clear": "jest --clearCache"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Matheus Alexandre da Silva",
   "devDependencies": {
     "@testing-library/react": "^11.2.7",
     "@types/axios": "^0.14.0",
