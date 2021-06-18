@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/matheusalxds/clean-react.svg?branch=master)](https://travis-ci.com/matheusalxds/clean-react)
+
 ### Sobre Arquitetura Limpa
 Infra é responsável por conter a implementação de pacotes de terceiros. Se fosse utilizado
 alguma lib para validar o email, não poderíamos fazer isso na camada de `validation`, mas 
