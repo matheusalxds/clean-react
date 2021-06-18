@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.com/matheusalxds/clean-react.svg?branch=master)](https://travis-ci.com/matheusalxds/clean-react)
 [![Coverage Status](https://coveralls.io/repos/github/matheusalxds/clean-react/badge.svg?branch=master)](https://coveralls.io/github/matheusalxds/clean-react?branch=master)
 
+[Imagem Clean Architecture](https://www.google.com/search?q=clean+architecture+Part+2+-+The+clean&tbm=isch&ved=2ahUKEwjsoJPvx6HxAhViNTUKHaJpC-4Q2-cCegQIABAA&oq=clean+architecture+Part+2+-+The+clean&gs_lcp=CgNpbWcQAzoECCMQJzoCCAA6BAgAEB46BggAEAgQHjoECAAQGDoECAAQE1DOogVYlMQFYNfFBWgAcAB4AIABfIgB7Q2SAQQxNC40mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=RcTMYKzqO-Lq1AGi063wDg&bih=858&biw=1732&hl=pt-BR#imgrc=tK8ptl3NaVeogM&imgdii=ClaRdnmXuC1bmM)
+
 ### Sobre Arquitetura Limpa
 Infra é responsável por conter a implementação de pacotes de terceiros. Se fosse utilizado
 alguma lib para validar o email, não poderíamos fazer isso na camada de `validation`, mas 
