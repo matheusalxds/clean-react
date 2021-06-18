@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/matheusalxds/clean-react.svg?branch=master)](https://travis-ci.com/matheusalxds/clean-react)
+[![Coverage Status](https://coveralls.io/repos/github/matheusalxds/clean-react/badge.svg?branch=master)](https://coveralls.io/github/matheusalxds/clean-react?branch=master)
 
 ### Sobre Arquitetura Limpa
 Infra é responsável por conter a implementação de pacotes de terceiros. Se fosse utilizado
