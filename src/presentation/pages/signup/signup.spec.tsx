@@ -13,11 +13,6 @@ type SutTypes = {
   sut: RenderResult
 }
 
-const populateField = (sut: RenderResult, fieldName: string, value = faker.random.word()): void => {
-  const input = sut.getByTestId(fieldName)
-  fireEvent.input(input, { target: { value } })
-}
-
 /**
  * It's not necessary to return validationStub because we don't need to make any validation for it
  * if was necessary, so the component needs to be renamed to Spy instead of Stub
@@ -52,7 +47,7 @@ describe('Siginup Component', () => {
   test('should show name error if Validation fails', () => {
     const validationError = faker.random.words()
     const { sut } = makeSut({ validationError })
-    populateField(sut, 'name')
+    Helper.populateField(sut, 'name')
     Helper.testStatusForField(sut, 'name', validationError)
   })
 })
