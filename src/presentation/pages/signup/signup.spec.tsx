@@ -124,7 +124,7 @@ describe('Siginup Component', () => {
     Helper.testElementExists(sut, 'spinner')
   })
 
-  test('should call AddAccouont with correct values', async () => {
+  test('should call AddAccount with correct values', async () => {
     const { sut, addAccountSpy } = makeSut()
     const name = faker.name.findName()
     const email = faker.internet.email()
@@ -136,5 +136,12 @@ describe('Siginup Component', () => {
       password,
       passwordConfirmation: password
     })
+  })
+
+  test('should call AddAccount only once', async () => {
+    const { sut, addAccountSpy } = makeSut()
+    await simulateValidSubmit(sut)
+    await simulateValidSubmit(sut)
+    expect(addAccountSpy.callsCount).toEqual(1)
   })
 })
