@@ -16,15 +16,23 @@ const makeSut = (word = faker.random.word()): SutTypes => {
 
 describe('EmailValidation', () => {
   test('should return error if e-mail invalid', () => {
-    const word = faker.random.word()
-    const { sut } = makeSut(word)
-    const error = sut.validate(faker.random.word())
-    expect(error).toEqual(new InvalidFieldError(word))
+    const field = faker.random.word()
+    const { sut } = makeSut(field)
+    const error = sut.validate({ [field]: faker.random.word() })
+    expect(error).toEqual(new InvalidFieldError(field))
   })
 
   test('should return falsy if e-mail valid', () => {
-    const { sut } = makeSut()
-    const error = sut.validate(faker.internet.email())
+    const field = faker.random.word()
+    const { sut } = makeSut(field)
+    const error = sut.validate({ [field]: faker.internet.email() })
+    expect(error).toBeFalsy()
+  })
+
+  test('should return falsy if e-mail is empty', () => {
+    const field = faker.random.word()
+    const { sut } = makeSut(field)
+    const error = sut.validate({ [field]: '' })
     expect(error).toBeFalsy()
   })
 })

@@ -7,8 +7,8 @@ type SutTypes = {
   sut: CompareFieldsValidation
 }
 
-const makeSut = (field: string, valueToCompare: string): SutTypes => {
-  const sut = new CompareFieldsValidation(field, valueToCompare)
+const makeSut = (field: string, fieldToCompare: string): SutTypes => {
+  const sut = new CompareFieldsValidation(field, fieldToCompare)
 
   return {
     sut
@@ -18,17 +18,18 @@ const makeSut = (field: string, valueToCompare: string): SutTypes => {
 describe('RequiredFieldValidation', () => {
   test('should return error if compare is invalid', () => {
     const field = faker.database.column()
-    const valueToCompare = faker.database.column()
-    const { sut } = makeSut(field, valueToCompare)
-    const error = sut.validate(faker.random.word())
+    const fieldToCompare = faker.database.column()
+    const { sut } = makeSut(field, fieldToCompare)
+    const error = sut.validate({ [field]: faker.random.word(), [fieldToCompare]: faker.random.word() })
     expect(error).toEqual(new InvalidFieldError(field))
   })
 
   test('should return error if compare is valid', () => {
     const field = faker.database.column()
-    const valueToCompare = field
-    const { sut } = makeSut(field, valueToCompare)
-    const error = sut.validate(valueToCompare)
+    const fieldToCompare = faker.database.column()
+    const value = faker.random.word()
+    const { sut } = makeSut(field, fieldToCompare)
+    const error = sut.validate({ [field]: value, [fieldToCompare]: value })
     expect(error).toBeFalsy()
   })
 })

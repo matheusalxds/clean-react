@@ -7,8 +7,8 @@ type SutTypes = {
   sut: MinLengthValidation
 }
 
-const makeSut = (): SutTypes => {
-  const sut = new MinLengthValidation(faker.database.column(), 5)
+const makeSut = (field: string): SutTypes => {
+  const sut = new MinLengthValidation(field, 5)
 
   return {
     sut
@@ -17,20 +17,22 @@ const makeSut = (): SutTypes => {
 
 describe('MinLengthValidation', () => {
   test('should return error if value is invalid', () => {
-    const { sut } = makeSut()
-    const error = sut.validate(faker.random.alphaNumeric(4))
+    const field = faker.database.column()
+    const { sut } = makeSut(field)
+    const error = sut.validate({ [field]: faker.random.alphaNumeric(4) })
     expect(error).toEqual(new InvalidFieldError('min-length'))
   })
 
   test('should return false if value is valid', () => {
-    const { sut } = makeSut()
-    const error = sut.validate(faker.random.alphaNumeric(5))
+    const field = faker.database.column()
+    const { sut } = makeSut(field)
+    const error = sut.validate({ [field]: faker.random.alphaNumeric(5) })
     expect(error).toBeFalsy()
   })
 
-  test('should return false if e-mail is empty', () => {
-    const { sut } = makeSut()
-    const error = sut.validate('')
+  test('should return falsy if field does not exist in schema', () => {
+    const { sut } = makeSut(faker.database.column())
+    const error = sut.validate({ [faker.database.column()]: faker.random.alphaNumeric(5) })
     expect(error).toBeFalsy()
   })
 })
