@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { Input, Footer, LoginHeader, FormStatus } from '@/presentation/components'
+import { Input, Footer, LoginHeader, FormStatus, SubmitButton } from '@/presentation/components'
 import Context from '@/presentation/contexts/form/form-context'
 
 import Styles from './signup-styles.scss'
@@ -19,6 +19,7 @@ const Signup: FC<Props> = ({ validation, addAccount, saveAccessToken }: Props) =
 
   const [state, setState] = useState({
     isLoading: false,
+    isFormInvalid: true,
     email: '',
     emailError: '',
     mainError: '',
@@ -31,19 +32,26 @@ const Signup: FC<Props> = ({ validation, addAccount, saveAccessToken }: Props) =
   })
 
   useEffect(() => {
+    const nameError = validation.validate('name', state.name)
+    const emailError = validation.validate('email', state.email)
+    const passwordError = validation.validate('password', state.password)
+    const passwordConfirmationError = validation.validate('passwordConfirmation', state.passwordConfirmation)
+    const isFormInvalid = !!nameError || !!emailError || !!passwordError || !!passwordConfirmationError
+
     setState({
       ...state,
-      nameError: validation.validate('name', state.name),
-      emailError: validation.validate('email', state.email),
-      passwordError: validation.validate('password', state.password),
-      passwordConfirmationError: validation.validate('password', state.password)
+      nameError,
+      emailError,
+      passwordError,
+      passwordConfirmationError,
+      isFormInvalid
     })
   }, [state.name, state.email, state.password, state.passwordConfirmation])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
     try {
-      if (state.isLoading || state.nameError || state.emailError || state.passwordError || state.passwordConfirmationError) {
+      if (state.isLoading || state.isFormInvalid) {
         return
       }
       setState({ ...state, isLoading: true })
@@ -74,14 +82,7 @@ const Signup: FC<Props> = ({ validation, addAccount, saveAccessToken }: Props) =
           <Input type="email" name="email" placeholder="Digite seu e-mail"/>
           <Input type="password" name="password" placeholder="Digite sua senha" />
           <Input type="password" name="passwordConfirmation" placeholder="Repita sua senha" />
-          <button
-            data-testid="submit"
-            disabled={!!state.nameError || !!state.emailError || !!state.passwordError || !!state.passwordConfirmationError}
-            className={Styles.submit}
-            type="submit"
-          >
-            Entrar
-          </button>
+          <SubmitButton title="Cadastrar"/>
           <Link data-testid="login-link" to="/login" className={Styles.link}>Criar conta</Link>
           <FormStatus />
         </form>
