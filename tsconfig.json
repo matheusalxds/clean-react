@@ -16,9 +16,12 @@
       "@/*": ["*"]
     },
     "allowJs": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "src/main/test/cypress"
   ]
 }

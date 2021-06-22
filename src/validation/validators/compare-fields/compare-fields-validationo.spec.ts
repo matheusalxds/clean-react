@@ -1,4 +1,3 @@
-import { RequiredFieldValidation } from '@/validation/validators/required-field/required-field-validation'
 import { CompareFieldsValidation } from '@/validation/validators/compare-fields/compare-fields-validation'
 import { InvalidFieldError } from '@/validation/errors'
 import faker from 'faker'

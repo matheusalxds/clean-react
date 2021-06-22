@@ -1,3 +1,4 @@
+
 [![Build Status](https://travis-ci.com/matheusalxds/clean-react.svg?branch=master)](https://travis-ci.com/matheusalxds/clean-react)
 [![Coverage Status](https://coveralls.io/repos/github/matheusalxds/clean-react/badge.svg?branch=master)](https://coveralls.io/github/matheusalxds/clean-react?branch=master)
 
@@ -64,3 +65,17 @@ Auxilia na hora de verificar atualizações referentes aos packages utilizados n
 sendo utilizados
 -u = Abre em modo iterativo, mostra quais queremos atualizar
 ````
+
+### Cypress
+Responsável pelos teste E2E.
+
+Para utilizar Cypress com Typescript, precisamos instalar um plugin, podemos encontrar o exemplo
+[aqui](https://docs.cypress.io/guides/tooling/typescript-support#Set-up-your-dev-environment).
+
+Para configurar o eslint + cypress, você pode encontrar as informações
+[aqui](https://github.com/cypress-io/eslint-plugin-cypress#readme).
+
+Para configurar o webpack preprocessor, você pode encontrar as informações
+[aqui](https://github.com/cypress-io/cypress/tree/master/npm/webpack-preprocessor#readme).
+
+[Mais informações aqui](https://docs.cypress.io/guides/references/configuration#cypress-json).
