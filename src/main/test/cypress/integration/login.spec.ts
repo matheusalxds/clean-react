@@ -30,7 +30,7 @@ describe('Login', () => {
     cy.getByTestId('email').focus().type(faker.random.word())
     FormHelper.testInputStatus('email', 'O campo email é invalido')
     cy.getByTestId('password').focus().type(faker.random.alphaNumeric(3))
-    FormHelper.testInputStatus('password', 'O campo min-length é invalido')
+    FormHelper.testInputStatus('password', 'O campo password é invalido')
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
@@ -67,13 +67,13 @@ describe('Login', () => {
     FormHelper.testUrl('/login')
   })
 
-  it('should save accessToken if valid credentials are provided', () => {
+  it('should save account if valid credentials are provided', () => {
     Http.mockOk()
     simulateValidSubmit()
     cy.getByTestId('main-error').should('not.exist')
     cy.getByTestId('spinner').should('not.exist')
     FormHelper.testUrl('/')
-    FormHelper.testLocalStorageItem('accessToken')
+    FormHelper.testLocalStorageItem('account')
   })
 
   it('should prevent multiple submits', () => {
