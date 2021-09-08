@@ -1,3 +1,9 @@
+/**
+ * Stub don't need to capture the values, it uses classes to return some value
+ * Spy capture values and mock a value
+ * Mock doesn't have returns, only receive values its goal is just storage values
+ */
+
 import {
   HttpGetClient,
   HttpGetParams,
