@@ -6,7 +6,7 @@ import faker from 'faker'
 // return mocked something
 export class GetStorageSpy implements GetStorage {
   key: string
-  value = faker.random.objectElement()
+  value: any = faker.random.objectElement()
 
   get (key: string): any {
     this.key = key
