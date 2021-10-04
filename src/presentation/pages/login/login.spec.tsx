@@ -8,7 +8,7 @@ import { ApiContext } from '@/presentation/contexts'
 import { Login } from '@/presentation/pages'
 import { ValidationStub, AuthenticationSpy, Helper } from '@/presentation/test'
 import { InvalidCredentialsError } from '@/domain/errors'
-import { AccountModel } from '@/domain/models'
+import { AddAccount } from '@/domain/usecases'
 
 type SutParams = {
   validationError: string
@@ -16,7 +16,7 @@ type SutParams = {
 
 type SutTypes = {
   authenticationSpy: AuthenticationSpy
-  setCurrentAccountMock: (account: AccountModel) => void
+  setCurrentAccountMock: (account: AddAccount.Model) => void
 }
 
 const makeSut = (params?: SutParams): SutTypes => {

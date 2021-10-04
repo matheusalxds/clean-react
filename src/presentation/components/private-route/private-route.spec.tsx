@@ -2,9 +2,10 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, MemoryHistory } from 'history'
+
 import PrivateRoute from './private-route'
 import { ApiContext } from '@/presentation/contexts'
-import { mockAccountModel } from '@/domain/test'
+import { mockAccountModel } from '@/presentation/test'
 
 type SutTypes = {
   history: MemoryHistory
